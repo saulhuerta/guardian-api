@@ -10,6 +10,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Component;
 
 import com.example.annotation.RateLimited;
+import com.example.exception.RateLimitException;
 
 import jakarta.servlet.http.HttpServletRequest;
 
@@ -44,7 +45,7 @@ public class RateLimitAspect {
 			System.err.println(
 					">>> [DENIED] IP: " + ip + " tried to request more than " + rateLimited.requests() + " times.");
 
-			throw new RuntimeException("Denied - Requests exceeded");
+			throw new RateLimitException("Denied - Requests exceeded");
 		}
 
 		System.out.println(">>> IP: " + ip + " - [ " + currentRequests + "]/" + rateLimited.requests());
