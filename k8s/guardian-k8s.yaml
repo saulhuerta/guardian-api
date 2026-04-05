@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: guardian-api
-          image: sauldevmx/guardian-api:v1
+          image: sauldevmx/guardian-api:v2.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
