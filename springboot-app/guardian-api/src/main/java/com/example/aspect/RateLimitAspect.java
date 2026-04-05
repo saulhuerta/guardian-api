@@ -43,8 +43,8 @@ public class RateLimitAspect {
 		if (currentRequests != null && currentRequests > rateLimited.requests()) {
 			System.err.println(
 					">>> [DENIED] IP: " + ip + " tried to request more than " + rateLimited.requests() + " times.");
-			// Aquí lanzamos una excepción pro para que Spring la cachee
-			throw new RuntimeException("Denied");
+
+			throw new RuntimeException("Denied - Requests exceeded");
 		}
 
 		System.out.println(">>> IP: " + ip + " - [ " + currentRequests + "]/" + rateLimited.requests());
